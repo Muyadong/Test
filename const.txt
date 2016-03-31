@@ -1,0 +1,41 @@
+#include<iostream.h>
+class song
+{
+public:
+	song(int r1,int r2,int r3):R3(r3)
+	{
+		R1=r1;
+		R2=r2;
+	}
+	void change();
+	void printf();
+	void printf() const;
+private:
+	int R1,R2;
+	const int R3;
+};
+void song::change()
+{
+	R1=100;
+	R2=R1+R3;
+}
+void song::printf()
+{
+	cout<<"调用非const成员函数printf()"<<endl;
+	cout<<R1<<","<<R2<<","<<R3<<","<<endl;
+}
+void song::printf() const
+{
+	cout<<"调用const成员函数printf()"<<endl;
+	cout<<R1<<","<<R2<<","<<R3<<","<<endl;
+}
+void main()
+{
+	song a(5,4,3);
+	a.printf();
+	const song b(20,52,70);
+	b.printf();
+	a.change();
+	a.printf();
+
+}
